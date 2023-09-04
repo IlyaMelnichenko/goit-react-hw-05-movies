@@ -2,7 +2,7 @@ import { TrendingList } from "components/TrendingList"
 import { useEffect, useState } from "react";
 import { getMovies } from "fetch";
 import { Link } from "react-router-dom";
-export const Home=()=>{
+const Home=()=>{
     const [movies,setMovies] = useState([]);
     useEffect(()=>{
       const creatMarkap=async()=>{
@@ -28,3 +28,5 @@ export const Home=()=>{
         </main>
     )
 }
+
+export default Home;
