@@ -1,6 +1,6 @@
 import { getMoviesByID } from "fetch";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, Outlet, useParams } from "react-router-dom";
 
 const MovieDetails=()=>{
     const {id} = useParams();
@@ -46,16 +46,31 @@ const MovieDetails=()=>{
         <p>{tag.name}</p>
       </li>
     ));
-    
+    const img=`http://image.tmdb.org/t/p/w500${poster_path}`;
+    const data=release_date.slice(0,4);
+    const score= Math.round(vote_average * 10);
     return(
         <main>
-            <h2>{title}</h2>
-            <img src='' alt=''/>
-            <p>User score:%</p>
-            <h3>Overview</h3>
-            <p>description</p>
+            <h2>{title}({data})</h2>
+            <img src={img} alt=''/>
+            <p>User score:{score}%</p>
+            <h3>Overiew</h3>
+            <p>{overview}</p>
             <h4>Genres</h4>
-            <p>Action</p>
+            <ul>
+              {tags}
+            </ul>
+            <p>Addinitional information</p>
+            <ul>
+              <li>
+                <Link to='cast'>Cast</Link>
+              </li>
+              <li>
+                <Link to='reviews'>Reviews</Link>
+              </li>
+            </ul>
+            <hr/>
+            <Outlet />
 
 
         

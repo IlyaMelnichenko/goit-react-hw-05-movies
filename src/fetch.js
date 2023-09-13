@@ -12,3 +12,13 @@ export const getMoviesByID = async(id)=>{
  const response = await axios(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`) ;
  return response.data;  
 }
+
+export const getReviews = async(id)=>{
+    const response=await axios(`https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${API_KEY}`);
+    return response.data;
+}
+
+export const getCast = async(id)=>{
+    const response=await axios(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${API_KEY}`);
+    return response.data;
+}
