@@ -8,7 +8,7 @@ import { Cast } from './Cast';
 
 export const App = () => {
   return (
-    <div>
+    <>
       <header>
         <StyledNav>
           <Link to="/">Home</Link>
@@ -25,6 +25,6 @@ export const App = () => {
           </Route>
         
       </Routes>
-    </div>
+    </>
   );
 };
