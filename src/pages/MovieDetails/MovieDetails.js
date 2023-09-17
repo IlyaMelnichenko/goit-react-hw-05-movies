@@ -1,6 +1,8 @@
 import { getMoviesByID } from 'fetch';
 import { useEffect, useRef, useState } from 'react';
-import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
+import { NavLink, Outlet, useLocation, useParams } from 'react-router-dom';
+import { StyledButton } from './StyledMovieDetails';
+import { StyledMain } from 'pages/Home/StyledHome';
 
 const MovieDetails = () => {
   const { id } = useParams();
@@ -26,14 +28,8 @@ const MovieDetails = () => {
     return;
   }
 
-  const {
-    title,
-    poster_path,
-    genres,
-    release_date,
-    vote_average,
-    overview,
-  } = movie;
+  const { title, poster_path, genres, release_date, vote_average, overview } =
+    movie;
   const tags =
     genres &&
     genres.map(tag => (
@@ -45,8 +41,8 @@ const MovieDetails = () => {
   const data = release_date.slice(0, 4);
   const score = Math.round(vote_average * 10);
   return (
-    <main>
-      <Link to={backButton.current} >Get back</Link>
+    <StyledMain>
+      <StyledButton to={backButton.current}>Get back</StyledButton>
       <h2>
         {title}({data})
       </h2>
@@ -59,15 +55,15 @@ const MovieDetails = () => {
       <p>Addinitional information</p>
       <ul>
         <li>
-          <Link to="cast">Cast</Link>
+          <NavLink to="cast">Cast</NavLink>
         </li>
         <li>
-          <Link to="reviews">Reviews</Link>
+          <NavLink to="reviews">Reviews</NavLink>
         </li>
       </ul>
       <hr />
       <Outlet />
-    </main>
+    </StyledMain>
   );
 };
 export default MovieDetails;

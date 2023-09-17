@@ -1,34 +1,37 @@
-import { TrendingList } from 'components/TrendingList';
+
 import { useEffect, useState } from 'react';
 import { getMovies } from 'fetch';
 import { Link } from 'react-router-dom';
+import { Item } from 'components/Searchlist/Item';
+import { StyledMain } from './StyledHome';
+import { StyledLi, StyledUl } from 'components/Cast/Styledcast';
 const Home = () => {
   const [movies, setMovies] = useState([]);
   useEffect(() => {
     const creatMarkap = async () => {
       const data = await getMovies();
-      const array = await data.results.map(({ title, id }) => {
-        return { title, id };
+      const array = await data.results.map(({ title, id,poster_path }) => {
+        return { title, id,poster_path };
       });
       setMovies(array);
     };
     creatMarkap();
   });
   return (
-    <main>
+    <StyledMain>
       <h2>Trending today</h2>
-      <ul>
+      <StyledUl>
         {movies.map(movie => {
           return (
-            <li key={movie.id}>
+            <StyledLi key={movie.id}>
               <Link to={`/movies/${movie.id}`}>
-                <TrendingList movie={movie} />{' '}
+                <Item movie={movie} />
               </Link>
-            </li>
+            </StyledLi>
           );
         })}
-      </ul>
-    </main>
+      </StyledUl>
+    </StyledMain>
   );
 };
 
