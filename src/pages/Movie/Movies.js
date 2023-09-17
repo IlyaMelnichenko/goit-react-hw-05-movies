@@ -1,11 +1,12 @@
 import { Item } from 'components/Searchlist/Item';
 import { getMovieByQuery } from 'fetch';
 import { useEffect, useState } from 'react';
-import { Link, useLocation, useSearchParams } from 'react-router-dom';
+import {  useLocation, useSearchParams } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import { StyledMain } from 'pages/Home/StyledHome';
 import { StyledLi, StyledUl } from 'components/Cast/Styledcast';
-import { StyledSearchButton } from './StyledMovie';
+import { StyledInput, StyledSearchButton } from './StyledMovie';
+import { StyledLink } from 'components/Layout/StyledLayout';
 
 
 const Movies = () => {
@@ -47,7 +48,7 @@ const Movies = () => {
     <StyledMain>
       <Toaster position="top-center" reverseOrder={true} />
       <form onSubmit={onSubmit}>
-        <input name="search" />
+        <StyledInput name="search" />
         <StyledSearchButton  type="submit">Search</StyledSearchButton>
       </form>
       <hr />
@@ -58,9 +59,9 @@ const Movies = () => {
             {movies.map(movie => {
               return (
                 <StyledLi key={movie.id}>
-                  <Link to={`/movies/${movie.id} `} state={{ from: location }}>
+                  <StyledLink to={`/movies/${movie.id} `} state={{ from: location }}>
                     <Item movie={movie} />
-                  </Link>
+                  </StyledLink>
                 </StyledLi>
               );
             })}

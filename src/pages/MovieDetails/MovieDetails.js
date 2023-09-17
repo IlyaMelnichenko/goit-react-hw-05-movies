@@ -3,6 +3,8 @@ import { useEffect, useRef, useState } from 'react';
 import { NavLink, Outlet, useLocation, useParams } from 'react-router-dom';
 import { StyledButton } from './StyledMovieDetails';
 import { StyledMain } from 'pages/Home/StyledHome';
+import { StyledUl } from 'components/Cast/Styledcast';
+import { StyledLink } from 'components/Layout/StyledLayout';
 
 const MovieDetails = () => {
   const { id } = useParams();
@@ -28,7 +30,7 @@ const MovieDetails = () => {
     return;
   }
 
-  const { title, poster_path, genres, release_date, vote_average, overview } =
+  const { title, poster_path, genres, release_date, vote_average, overview,homepage } =
     movie;
   const tags =
     genres &&
@@ -47,20 +49,27 @@ const MovieDetails = () => {
         {title}({data})
       </h2>
       <img src={img} alt="" />
+      {homepage && (
+                <div>
+                  <p>Homepage: </p>
+                  <a href={homepage} target="_blank" rel="noreferrer">
+                    {homepage}
+                  </a>
+                </div>)}
       <p>User score:{score}%</p>
       <h3>Overiew</h3>
       <p>{overview}</p>
       <h4>Genres</h4>
-      <ul>{tags}</ul>
+      <StyledUl>{tags}</StyledUl>
       <p>Addinitional information</p>
-      <ul>
+      <StyledUl>
         <li>
-          <NavLink to="cast">Cast</NavLink>
+          <StyledButton  to="cast">Cast</StyledButton>
         </li>
         <li>
-          <NavLink to="reviews">Reviews</NavLink>
+          <StyledButton  to="reviews">Reviews</StyledButton>
         </li>
-      </ul>
+      </StyledUl>
       <hr />
       <Outlet />
     </StyledMain>

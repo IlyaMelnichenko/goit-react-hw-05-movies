@@ -14,4 +14,13 @@ export const StyledSearchButton = styled.button`
   margin: auto;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  margin-top:12px;
+  font-size:18px;
+  `
+  export const StyledInput = styled.input`
+  border-radius:15px;
+  width:350px;
+  height: 30px;
+  text-align: center;
+  font-size:22px;
   `
