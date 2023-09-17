@@ -18,7 +18,7 @@ export const Cast = () => {
       }
     }
     fetchCast();
-  }, []);
+  }, [id]);
 
   return (
     <>

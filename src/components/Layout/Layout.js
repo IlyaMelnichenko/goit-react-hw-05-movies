@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
+import {  Outlet } from 'react-router-dom';
 import { StyledHeader, StyledLink, StyledNav } from './StyledLayout';
 
 const Layout = () => {

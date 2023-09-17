@@ -17,7 +17,7 @@ export const Reviews = () => {
       }
     }
     createRewies();
-  }, []);
+  }, [id]);
 
   return (
     <>

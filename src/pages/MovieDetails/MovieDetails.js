@@ -1,10 +1,10 @@
 import { getMoviesByID } from 'fetch';
 import { useEffect, useRef, useState } from 'react';
-import { NavLink, Outlet, useLocation, useParams } from 'react-router-dom';
+import {  Outlet, useLocation, useParams } from 'react-router-dom';
 import { StyledButton } from './StyledMovieDetails';
 import { StyledMain } from 'pages/Home/StyledHome';
 import { StyledUl } from 'components/Cast/Styledcast';
-import { StyledLink } from 'components/Layout/StyledLayout';
+
 
 const MovieDetails = () => {
   const { id } = useParams();
