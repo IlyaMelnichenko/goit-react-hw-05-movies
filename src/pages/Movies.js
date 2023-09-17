@@ -1,11 +1,13 @@
 import { Searchlist } from 'components/Searchlist';
 import { getMovieByQuery } from 'fetch';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
+  
   const [query, setQuery] = useState(null);
+  const location = useLocation();
   const onSearch = e => {
     e.preventDefault();
     const newQuery = e.target.elements.search.value;
@@ -40,7 +42,7 @@ const Movies = () => {
             {movies.map(movie => {
               return (
                 <li key={movie.id}>
-                  <Link to={`/movies/${movie.id}`}>
+                  <Link to={`/movies/${movie.id} `} state={{ from: location }}>
                     <Searchlist movie={movie} />
                   </Link>
                 </li>

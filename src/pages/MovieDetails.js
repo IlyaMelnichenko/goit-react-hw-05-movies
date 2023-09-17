@@ -1,10 +1,12 @@
 import { getMoviesByID } from 'fetch';
-import { useEffect, useState } from 'react';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 
 const MovieDetails = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState(null);
+  const location = useLocation();
+  const backButton = useRef(location.state?.from ?? '/');
 
   useEffect(() => {
     async function buBu() {
@@ -44,6 +46,7 @@ const MovieDetails = () => {
   const score = Math.round(vote_average * 10);
   return (
     <main>
+      <Link to={backButton.current} >Get back</Link>
       <h2>
         {title}({data})
       </h2>

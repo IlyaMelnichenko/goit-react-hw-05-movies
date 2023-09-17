@@ -23,7 +23,7 @@ export const getCast = async(id)=>{
     return response.data;
 }
 export const getMovieByQuery = async(query)=>{
-    const response=await axios(`/search/movie/?api_key=${API_KEY}&query=${query}`);
+    const response=await axios(`/search/movie?api_key=${API_KEY}&query=${query}`);
     return response.data;
 }
 
