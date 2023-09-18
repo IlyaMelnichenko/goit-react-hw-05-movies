@@ -1,10 +1,9 @@
 import { getMoviesByID } from 'fetch';
-import { useEffect, useRef, useState } from 'react';
-import {  Outlet, useLocation, useParams } from 'react-router-dom';
+import { Suspense, useEffect, useRef, useState } from 'react';
+import { Outlet, useLocation, useParams } from 'react-router-dom';
 import { StyledButton } from './StyledMovieDetails';
 import { StyledMain } from 'pages/Home/StyledHome';
 import { StyledUl } from 'components/Cast/Styledcast';
-
 
 const MovieDetails = () => {
   const { id } = useParams();
@@ -24,14 +23,21 @@ const MovieDetails = () => {
     buBu();
   }, [id]);
 
-  console.log(movie);
+  
 
   if (movie === null) {
     return;
   }
 
-  const { title, poster_path, genres, release_date, vote_average, overview,homepage } =
-    movie;
+  const {
+    title,
+    poster_path,
+    genres,
+    release_date,
+    vote_average,
+    overview,
+    homepage,
+  } = movie;
   const tags =
     genres &&
     genres.map(tag => (
@@ -50,12 +56,13 @@ const MovieDetails = () => {
       </h2>
       <img src={img} alt="" />
       {homepage && (
-                <div>
-                  <p>Homepage: </p>
-                  <a href={homepage} target="_blank" rel="noreferrer">
-                    {homepage}
-                  </a>
-                </div>)}
+        <div>
+          <p>Homepage: </p>
+          <a href={homepage} target="_blank" rel="noreferrer">
+            {homepage}
+          </a>
+        </div>
+      )}
       <p>User score:{score}%</p>
       <h3>Overiew</h3>
       <p>{overview}</p>
@@ -64,14 +71,16 @@ const MovieDetails = () => {
       <p>Addinitional information</p>
       <StyledUl>
         <li>
-          <StyledButton  to="cast">Cast</StyledButton>
+          <StyledButton to={"cast"}>Cast</StyledButton>
         </li>
         <li>
-          <StyledButton  to="reviews">Reviews</StyledButton>
+          <StyledButton to={"reviews"}>Reviews</StyledButton>
         </li>
       </StyledUl>
       <hr />
-      <Outlet />
+      <Suspense  fallback={<div>Loading...</div>}>
+        <Outlet />
+      </Suspense>
     </StyledMain>
   );
 };

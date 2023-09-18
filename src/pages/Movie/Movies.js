@@ -48,7 +48,8 @@ const Movies = () => {
     <StyledMain>
       <Toaster position="top-center" reverseOrder={true} />
       <form onSubmit={onSubmit}>
-        <StyledInput name="search" />
+        <StyledInput name="search"
+        defaultValue={query} />
         <StyledSearchButton  type="submit">Search</StyledSearchButton>
       </form>
       <hr />

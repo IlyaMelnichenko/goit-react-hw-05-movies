@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { StyledLi, StyledUl } from './Styledcast';
 
-export const Cast = () => {
+const Cast = () => {
   const [cast, setCast] = useState(null);
   const { id } = useParams();
   useEffect(() => {
@@ -42,3 +42,4 @@ export const Cast = () => {
     </>
   );
 };
+export default Cast;
